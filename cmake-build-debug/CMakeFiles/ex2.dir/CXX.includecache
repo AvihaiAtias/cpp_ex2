@@ -47,6 +47,8 @@ list
 -
 Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/Vehicle.h
+memory
+-
 
 C:/Users/aviha/CLionProjects/ex2/Tram.h
 Vehicle.h
@@ -81,12 +83,14 @@ C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 iostream
 -
-Station.h
-C:/Users/aviha/CLionProjects/ex2/Station.h
 
 C:/Users/aviha/CLionProjects/ex2/main.cpp
 iostream
 -
 Station.h
 C:/Users/aviha/CLionProjects/ex2/Station.h
+Bus.h
+C:/Users/aviha/CLionProjects/ex2/Bus.h
+Tram.h
+C:/Users/aviha/CLionProjects/ex2/Tram.h
 

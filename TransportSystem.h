@@ -21,8 +21,11 @@ public:
     TransportSystem& reverseEdges();//return the graph after reverse all edges
     TransportSystem(const TransportSystem& rhs);
     TransportSystem& operator=(const TransportSystem& rhs);
+    TransportSystem(TransportSystem&& rhs);
+    TransportSystem&& operator=(TransportSystem&& rhs);
     void uniExpress(Station& source,Station& target);
     void print()const;
+
 
 };
 

@@ -5,10 +5,10 @@
 #ifndef EX2_VEHICLE_H
 #define EX2_VEHICLE_H
 #include <iostream>
-#include "Station.h"
+
 
 using namespace std;
-
+class Station;
 class Vehicle{
     size_t time_Weight;
     Station* parent;

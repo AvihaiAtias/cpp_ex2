@@ -20,11 +20,12 @@ CMakeFiles/ex2.dir/TransportSystem.cpp.obj: ../Vehicle.h
 CMakeFiles/ex2.dir/Validations.cpp.obj: ../Validations.cpp
 CMakeFiles/ex2.dir/Validations.cpp.obj: ../Validations.h
 
-CMakeFiles/ex2.dir/Vehicle.cpp.obj: ../Station.h
 CMakeFiles/ex2.dir/Vehicle.cpp.obj: ../Vehicle.cpp
 CMakeFiles/ex2.dir/Vehicle.cpp.obj: ../Vehicle.h
 
+CMakeFiles/ex2.dir/main.cpp.obj: ../Bus.h
 CMakeFiles/ex2.dir/main.cpp.obj: ../Station.h
+CMakeFiles/ex2.dir/main.cpp.obj: ../Tram.h
 CMakeFiles/ex2.dir/main.cpp.obj: ../Vehicle.h
 CMakeFiles/ex2.dir/main.cpp.obj: ../main.cpp
 

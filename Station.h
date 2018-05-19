@@ -7,18 +7,20 @@
 #include <iostream>
 #include <list>
 #include "Vehicle.h"
+#include <memory>
 
 using namespace std;
 typedef enum{intercity = 0,stad,centraal}location;
 typedef enum{bus = 0,tram,sprinter,rail}indexOfVehicle;
 class Station {
+    static const int NUM_OF_VEHICLES = 4;
     static size_t IC_TRANSIT_TIME;
     static size_t STAD_TRANSIT_TIME;
     static size_t CS_TRANSIT_TIME;
     string name;
     location currLocation;
-    Vehicle** vehicles;//should replaced by smart pointers
-    list<Station*> adjacent;
+    shared_ptr<Vehicle> vehicles[NUM_OF_VEHICLES];
+    list<Station*> adjacent;    //reached by me
     void init();
 public:
     Station(string name);
