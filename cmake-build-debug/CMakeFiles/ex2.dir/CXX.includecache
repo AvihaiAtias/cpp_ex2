@@ -10,15 +10,33 @@ C:/Users/aviha/CLionProjects/ex2/Bus.h
 Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 
+C:/Users/aviha/CLionProjects/ex2/Exceptions.h
+iostream
+-
+
 C:/Users/aviha/CLionProjects/ex2/IOmanager.cpp
 IOmanager.h
 C:/Users/aviha/CLionProjects/ex2/IOmanager.h
+Exceptions.h
+C:/Users/aviha/CLionProjects/ex2/Exceptions.h
+string
+-
+vector
+-
 
 C:/Users/aviha/CLionProjects/ex2/IOmanager.h
 iostream
 -
 fstream
 -
+map
+-
+Validations.h
+C:/Users/aviha/CLionProjects/ex2/Validations.h
+TransportSystem.h
+C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
+Vehicle.h
+C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 
 C:/Users/aviha/CLionProjects/ex2/Rail.h
 Vehicle.h
@@ -47,6 +65,8 @@ list
 -
 Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/Vehicle.h
+TransportSystem.h
+C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
 memory
 -
 
@@ -57,24 +77,38 @@ C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/TransportSystem.cpp
 TransportSystem.h
 C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
+limits
+-
 
 C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
 iostream
 -
 list
 -
+vector
+-
 Station.h
 C:/Users/aviha/CLionProjects/ex2/Station.h
+Vehicle.h
+C:/Users/aviha/CLionProjects/ex2/Vehicle.h
 
 C:/Users/aviha/CLionProjects/ex2/Validations.cpp
+vector
+-
 Validations.h
 C:/Users/aviha/CLionProjects/ex2/Validations.h
 
 C:/Users/aviha/CLionProjects/ex2/Validations.h
-iostream
+sstream
 -
 fstream
 -
+vector
+-
+map
+-
+Exceptions.h
+C:/Users/aviha/CLionProjects/ex2/Exceptions.h
 
 C:/Users/aviha/CLionProjects/ex2/Vehicle.cpp
 Vehicle.h
@@ -87,10 +121,16 @@ iostream
 C:/Users/aviha/CLionProjects/ex2/main.cpp
 iostream
 -
+sstream
+-
 Station.h
 C:/Users/aviha/CLionProjects/ex2/Station.h
-Bus.h
-C:/Users/aviha/CLionProjects/ex2/Bus.h
-Tram.h
-C:/Users/aviha/CLionProjects/ex2/Tram.h
+Validations.h
+C:/Users/aviha/CLionProjects/ex2/Validations.h
+IOmanager.h
+C:/Users/aviha/CLionProjects/ex2/IOmanager.h
+TransportSystem.h
+C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
+Station.h
+C:/Users/aviha/CLionProjects/ex2/Station.h
 

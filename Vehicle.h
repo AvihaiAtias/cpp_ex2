@@ -9,12 +9,16 @@
 
 using namespace std;
 class Station;
+class TransportSystem;
+typedef enum{bus = 0,tram,sprinter,rail}indexOfVehicle;
 class Vehicle{
+public:
     size_t time_Weight;
     Station* parent;
-public:
-    Vehicle():time_Weight{0}{}
-    Vehicle(size_t time):time_Weight{time}{}
+    friend class TransportSystem;
+//public:
+    Vehicle():time_Weight{0},parent{nullptr}{}
+    Vehicle(size_t time):time_Weight{time},parent{nullptr}{}
 
     virtual int getStopTime() = 0;
 

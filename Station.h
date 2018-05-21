@@ -7,13 +7,16 @@
 #include <iostream>
 #include <list>
 #include "Vehicle.h"
+#include "TransportSystem.h"
 #include <memory>
 
 using namespace std;
+
 typedef enum{intercity = 0,stad,centraal}location;
-typedef enum{bus = 0,tram,sprinter,rail}indexOfVehicle;
 class Station {
+public://TODO remove
     static const int NUM_OF_VEHICLES = 4;
+    static size_t locationKey[3]; //TODO COMPLETE
     static size_t IC_TRANSIT_TIME;
     static size_t STAD_TRANSIT_TIME;
     static size_t CS_TRANSIT_TIME;
@@ -22,7 +25,10 @@ class Station {
     shared_ptr<Vehicle> vehicles[NUM_OF_VEHICLES];
     list<Station*> adjacent;    //reached by me
     void init();
+    friend class TransportSystem;
 public:
+    Station* findIfStationExistInList(const string &StationName); //TODO AND ADD TO AVIHAI
+    Station(string name,indexOfVehicle index,size_t weight);//TODO AND ADD TO AVIHAI
     Station(string name);
     static size_t getIC_TRANSIT_TIME() {
         return IC_TRANSIT_TIME;
@@ -56,8 +62,9 @@ public:
         return currLocation;
     }
     size_t getcurrTransitTime()const;
-    Vehicle **getVehicles() const {
-        return vehicles;
+
+    shared_ptr<Vehicle> getVehicles(){
+        return *vehicles;
     }
 
 };

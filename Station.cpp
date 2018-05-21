@@ -35,3 +35,17 @@ size_t Station::getcurrTransitTime()const{
             return CS_TRANSIT_TIME;
     }
 }
+Station::Station(string name,indexOfVehicle index,size_t weight){
+    init();
+    this->name = name;
+    vehicles[index]->setTime_Weight(weight);
+}
+Station* Station::findIfStationExistInList(const string &StationName){
+    list<Station*>::iterator begin=adjacent.begin();
+    list<Station*>::iterator end=adjacent.end();
+    for(;begin!=end;begin++){
+        if((*begin)->getName() == StationName)
+            return *begin;
+    }
+    return nullptr;
+}
