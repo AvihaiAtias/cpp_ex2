@@ -197,7 +197,7 @@ size_t * TransportSystem::edgeWeightTotalCalculation(Station* source,Station* ta
     }
     for(int j = 0 ; j < 4 ; j++){
         if(j != i){
-            elaborateWeightArray[j] = source->vehicles[i]->time_Weight+target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime()+ source->locationKey[source->currLocation];
+             elaborateWeightArray[j] = source->vehicles[i]->time_Weight+target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime()+ source->locationKey[source->currLocation];
             continue;
         }
         elaborateWeightArray[j] = source->vehicles[i]->time_Weight + target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime();
