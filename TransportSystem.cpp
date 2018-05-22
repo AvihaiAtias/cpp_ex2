@@ -129,7 +129,7 @@ void TransportSystem::dijkstraSupport(Station* source,indexOfVehicle index){
             point2MainVertex = findStationIfExist((*beginIn)->name);
             //TODO DELETE in the end
             if(!point2MainVertex){
-                cout << "Disaster!!" << endl;
+                cout << "Disaster!!" << endl;//TODO change this print
                 exit(1);
             }
             if(point2MainVertex->vehicles[index]->time_Weight > currWeight && point2MainVertex->vehicles[index]->time_Weight != 0){
@@ -182,25 +182,25 @@ void TransportSystem::makeAllInf(){
     }
 }
 size_t * TransportSystem::edgeWeightTotalCalculation(Station* source,Station* target){
-    size_t* ArraySum = new size_t[4];
+    size_t* elaborateWeightArray = new size_t[4];
     int i = 0;
     bool flag = false;
     for(i = 0 ; i < 4 ; i++){
-        if(source->vehicles[i]->time_Weight!=std::numeric_limits<int>::max()){
+        if(source->vehicles[i]->time_Weight != numeric_limits<int>::max()){
             flag = true;
             break;
         }
     }
     if(!flag){
-        cout<<"somthing wrong!!"<<endl;
+        cout<<"somthing wrong!!"<<endl; //TODO change this print
         return nullptr;
     }
     for(int j = 0 ; j < 4 ; j++){
         if(j != i){
-            ArraySum[j] = source->vehicles[i]->time_Weight+target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime()+ source->locationKey[source->currLocation];
+            elaborateWeightArray[j] = source->vehicles[i]->time_Weight+target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime()+ source->locationKey[source->currLocation];
             continue;
         }
-        ArraySum[j] = source->vehicles[i]->time_Weight + target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime();
+        elaborateWeightArray[j] = source->vehicles[i]->time_Weight + target->vehicles[j]->time_Weight+target->vehicles[j]->getStopTime();
     }
-    return ArraySum;
+    return elaborateWeightArray;
 }
