@@ -8,46 +8,70 @@
 #include <vector>
 
 //TODO match the station file for this constructor.
-IOmanager::IOmanager(int argc,char* argv[]):graph{},inputfiles{},configFile{new fstream()},loadFile{new fstream()},
+IOmanager::IOmanager(int argc,char* argv[]):inputfiles{},configFile{new fstream()},loadFile{new fstream()},
                     outputFile{new fstream()},busWait{2},tramWait{3},sprinterWait{4},railWait{5},
                     ICTransit{15},CSTransit{5},StadTransit{10}{
+    run(argc,argv);
+}
+void IOmanager::run(int argc,char* argv[]){
     try{
-        Validations::inputFilesArrangment(argc,argv,inputfiles);
-        Validations::filesFilter(argc,argv,inputfiles);
+        Validations::isThereFileExist(argc,argv);
+        arrangeTheInputFiles(argc,argv);
         arrangeTheConfigAndOutput(argc,argv);
-
-        //TODO build the graph here
-
+        graph = new TransportSystem(busWait,tramWait,sprinterWait,railWait,ICTransit,StadTransit,CSTransit);
+        buildTheGraphFromTheInputFiles();
         waitForMoreInstructions();
     }catch(NoSuchFileExist e){
         exit(1);
+    }catch(ArgumentsAmountError e){
+        exit(1);
     }
-
 }
-void IOmanager::waitForMoreInstructions(){
-    string temp = "";
-    string loadCommand = "";
-    string fileName = "";
-    do{
-        cin >> temp;
-    }while(temp != "");
+void IOmanager::buildTheGraphFromTheInputFiles(){
+    map<string,fstream*>::iterator begin = inputfiles.begin();
+    map<string,fstream*>::iterator last = inputfiles.end();
 
-    stringstream ss(temp);
-    ss >> loadCommand >> fileName;
-
-    if(loadCommand != "load")
-        throw LoadedFileException("ERROR opening the specified file.");
-
-    load(fileName);
-
-}
-void IOmanager::takeTheInputFile(){
-    map<string,fstream*>::iterator it;
-    fstream* currfile;
-    for(it = inputfiles.begin();it != inputfiles.end(); it++){
-        parseTheDataFromFile(it->second,it->first);
+    while(begin != last){
+        parseTheDataFromFile(begin->second,begin->first);
+        ++begin;
     }
-
+}
+void IOmanager::arrangeTheInputFiles(int argc,char* argv[]){
+    string str;
+    for (int i = 1; i < argc; i++) {
+        str = argv[i];
+        if(str == "-c" || str == "-o") {
+            ++i;
+            continue;
+        }
+        try{
+            Validations::isNameStartWithVehicle(str);
+        }catch (NameFileIsUnCorrect e) {
+            continue;
+        }
+        fstream* fin = new fstream(argv[i], ios_base::in);
+        if (fin) {
+            inputfiles.insert(std::pair<string,fstream*>(argv[i],fin));
+            fin->close();
+            continue;
+        }else{ //unCorrect file was found and will be ignored
+            try{
+                stringstream ss;
+                ss << " the file: '" << argv[i] << "' is uncorrect and will be ignored";
+                throw FileNotOpenException(ss.str());
+            }catch (FileNotOpenException e){
+                continue;
+            }
+        }
+    }
+}
+void IOmanager::loadFilePrepare(const string& fileName){
+    try{
+        Validations::isNameStartWithVehicle(fileName);
+        load(fileName);
+    }catch (exception e){
+        throw LoadedFileException(e.what());
+    }
 }
 void IOmanager::load(const string& fileName) {
     loadFile->open(fileName,ios_base::in);
@@ -59,6 +83,102 @@ void IOmanager::load(const string& fileName) {
     cout << "Update was successful.";
 
 }
+void IOmanager::outboundCommandActivated(const string& station){
+    Station* temp = graph->findStationIfExist(station);
+    if(temp  == nullptr)
+        throw IllegalStation("station source doesn`t exist");
+
+    graph->outbound(temp);
+}
+void IOmanager::inboundCommandActivated(const string& station){
+    Station* temp = graph->findStationIfExist(station);
+    if(temp  == nullptr)
+        throw IllegalStation("station target doesn`t exist");
+
+    graph->inbound(temp);
+}
+void IOmanager::uniExpressCommandActivated(const string& source,const string& target){
+    Station* sourceStation = graph->findStationIfExist(source);
+    Station* targetStation = graph->findStationIfExist(target);
+    if(sourceStation  == nullptr)
+        throw IllegalStation("station source doesn`t exist");
+    if(targetStation  == nullptr)
+        throw IllegalStation("station target doesn`t exist");
+    graph->uniExpress(sourceStation,targetStation);
+}
+void IOmanager::multiExpressCommandActivated(const string& source,const string& target){
+    Station* sourceStation = graph->findStationIfExist(source);
+    Station* targetStation = graph->findStationIfExist(target);
+    if(sourceStation  == nullptr)
+        throw IllegalStation("station source doesn`t exist");
+    if(targetStation  == nullptr)
+        throw IllegalStation("station target doesn`t exist");
+    graph->multiExpress(sourceStation,targetStation);
+}
+void IOmanager::waitForMoreInstructions(){
+    string inst;
+    stringstream instruction;
+    string command = "";
+    string srcStation = "";
+    string tgtStation = "";
+    while(true){
+        printMenu();
+        cin >> inst;
+        instruction << inst;
+        instruction >> command;
+        try{
+            if(command == "print"){
+                graph->print();
+            }else if(command == "QUIT"){
+                return;
+            }
+            else if(command == "outbound"){
+                instruction >> srcStation;
+                outboundCommandActivated(srcStation);
+            }else if(command == "inbound"){
+                instruction >> srcStation;
+                inboundCommandActivated(srcStation);
+            }else if(command == "uniExpress"){
+                instruction >> tgtStation;
+                uniExpressCommandActivated(srcStation,tgtStation);
+            }else if(command == "multiExpress"){
+                instruction >> tgtStation;
+                multiExpressCommandActivated(srcStation,tgtStation);
+            }else if(command == "load"){
+                loadFilePrepare(srcStation);
+            }
+        }catch (IllegalStation e){
+            continue;
+        }catch (LoadedFileException e){
+            continue;
+        }
+    }
+}
+void IOmanager::printMenu(){
+    cout << "~~~~~~~~~ MENU ~~~~~~~~~~" << endl;
+    cout << "1. Load File " << endl;
+    cout << "2. uniExpress " << endl;
+    cout << "3. multiExpress " << endl;
+    cout << "4. inbound " << endl;
+    cout << "5. outbound " << endl;
+    cout << "6. exit" << endl;
+}
+
+Station* IOmanager::returnStationIfExistByName(const string& name){
+    Station* station = nullptr;
+    if((station = graph->findStationIfExist(name)) == nullptr)
+        throw IllegalStation("this station doesn`t exist!");
+    return station;
+}
+void IOmanager::takeTheInputFile(){
+    map<string,fstream*>::iterator it;
+    fstream* currfile;
+    for(it = inputfiles.begin();it != inputfiles.end(); it++){
+        parseTheDataFromFile(it->second,it->first);
+    }
+
+}
+
 indexOfVehicle IOmanager::whichTypeOfVehicle(const string& filename){
     string temp = filename;
     if(temp.find_first_not_of("bus") == 3) return bus;
@@ -77,7 +197,7 @@ void IOmanager::parseTheDataFromFile(fstream* fin,const string& filename){
         stringstream ss(lineData[2]);
         ss >> weight;
 
-        graph.addStation(lineData[0],lineData[1],weight,type);
+        graph->addStation(lineData[0],lineData[1],weight,type);
 
         lineData.clear();
     }

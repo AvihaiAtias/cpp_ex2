@@ -42,4 +42,9 @@ public:
     LoadedFileException(){}
     LoadedFileException(const string& msg){cerr << msg << endl;}
 };
+class IllegalStation:public exception{
+public:
+    IllegalStation(){}
+    IllegalStation(const string& msg){cerr << msg << endl;}
+};
 #endif //EX2_EXCEPTIONS_H

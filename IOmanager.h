@@ -14,7 +14,7 @@
 using namespace std;
 
 class IOmanager {
-    TransportSystem graph;
+    TransportSystem* graph;
     map<string,fstream*> inputfiles;
     fstream* configFile;
     fstream* outputFile;
@@ -30,6 +30,13 @@ class IOmanager {
     void parseTheDataFromFile(fstream* fin,const string& filename);
     void waitForMoreInstructions();
     indexOfVehicle whichTypeOfVehicle(const string& filename);
+    Station* returnStationIfExistByName(const string& name);
+    void printMenu();
+    void arrangeTheInputFiles(int argc,char* argv[]);
+    void run(int argc,char* argv[]);
+    void buildTheGraphFromTheInputFiles();
+    void loadFilePrepare(const string& fileName);
+    void disributionFunction(const int& choose);
 public:
     IOmanager(int argc,char* argv[]);
     void arrangeTheConfigAndOutput(int argc,char* argv[]);
@@ -38,6 +45,10 @@ public:
     void takeTheInputFile();
     virtual ~IOmanager();
     void load(const string& fileName);//TODO checks and valids of lines and create the stations after
+    void outboundCommandActivated(const string &station);
+    void inboundCommandActivated(const string &station);
+    void uniExpressCommandActivated(const string& source,const string& target);
+    void multiExpressCommandActivated(const string& source,const string& target);
 };
 
 

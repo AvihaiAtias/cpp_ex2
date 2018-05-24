@@ -91,6 +91,14 @@ Station.h
 C:/Users/aviha/CLionProjects/ex2/Station.h
 Vehicle.h
 C:/Users/aviha/CLionProjects/ex2/Vehicle.h
+Bus.h
+C:/Users/aviha/CLionProjects/ex2/Bus.h
+Tram.h
+C:/Users/aviha/CLionProjects/ex2/Tram.h
+Sprinter.h
+C:/Users/aviha/CLionProjects/ex2/Sprinter.h
+Rail.h
+C:/Users/aviha/CLionProjects/ex2/Rail.h
 
 C:/Users/aviha/CLionProjects/ex2/Validations.cpp
 vector
@@ -109,6 +117,8 @@ map
 -
 Exceptions.h
 C:/Users/aviha/CLionProjects/ex2/Exceptions.h
+TransportSystem.h
+C:/Users/aviha/CLionProjects/ex2/TransportSystem.h
 
 C:/Users/aviha/CLionProjects/ex2/Vehicle.cpp
 Vehicle.h

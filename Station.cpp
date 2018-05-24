@@ -8,9 +8,10 @@
 #include "Sprinter.h"
 #include "Rail.h"
 
-size_t Station::IC_TRANSIT_TIME = 15;
-size_t Station::STAD_TRANSIT_TIME = 10;
-size_t Station::CS_TRANSIT_TIME = 5;
+size_t Station::IC_TRANSIT_TIME = 0;
+size_t Station::STAD_TRANSIT_TIME = 0;
+size_t Station::CS_TRANSIT_TIME = 0;
+size_t Station::locationKey[3] = {IC_TRANSIT_TIME,IC_TRANSIT_TIME,IC_TRANSIT_TIME};
 
 Station::Station(string name):name{name}{
     init();

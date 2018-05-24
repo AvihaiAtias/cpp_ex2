@@ -6,21 +6,23 @@
 
 
 
-    void Validations::inputFilesArrangment(int argc, char* argv[],map<string,fstream*>& infiles) {
+    void Validations::isThereFileExist(int argc, char* argv[]) {
         string str;
         if (isCorrectNumberOfArgs(argc) == false)
             throw ArgumentsAmountError("there are not enough Arguments");
         for (int i = 1; i < argc; i++) {
             str = argv[i];
-            if(str == "-c" || str == "-o") break;
-            fstream* fin = new fstream(argv[i], ios_base::in);
-            if (fin) {
-                infiles.insert(std::pair<string,fstream*>(argv[i],fin));
-                fin->close();
+            if(str == "-c" || str == "-o"){
+                ++i;
                 continue;
             }
+            fstream* fin = new fstream(argv[i], ios_base::in);
+            if (fin) {
+                fin->close();
+                return; // mean that there is 1 input file correct at least;
+            }
         }
-        if(infiles.empty()) throw NoSuchFileExist("no such file exist");
+        throw NoSuchFileExist("no such file exist"); //if there are no input files
     }
     void Validations::isNameStartWithVehicle(const string& name){
         string temp = name;
@@ -59,26 +61,13 @@
         sepLine.push_back(num);
     }
     void Validations::isNamelengthCorrect(const string& name) {
-    if(name.length() > MAX_LENGTH_OF_STATION){
-        stringstream ss;
-        ss <<"the name: "<< name << "is too Long" << endl;
-        throw LineInputUnCorrect(ss.str());
-    }
-
-    }
-    void Validations::filesFilter(int argc, char* argv[],map<string,fstream*>& inputfiles){
-        string str;
-        map<string,fstream*>::iterator it;
-        for(it = inputfiles.begin(); it != inputfiles.end();it++){
-            str = it->first;
-            try{
-                isNameStartWithVehicle(str);
-            }catch (NameFileIsUnCorrect e){
-                delete inputfiles.at(str);
-                inputfiles.erase(str);
-            }
+        if(name.length() > MAX_LENGTH_OF_STATION){
+            stringstream ss;
+            ss <<"the name: "<< name << "is too Long" << endl;
+            throw LineInputUnCorrect(ss.str());
         }
     }
+
 
     //------------private methods---------------------
     bool Validations::isTabsCountCorrect(const string& line){

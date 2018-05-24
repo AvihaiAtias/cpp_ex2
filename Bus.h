@@ -18,6 +18,4 @@ public:
     static void setStopTime(int stop){BusStopTime = stop;}
 
 };
-int Bus::BusStopTime = 2;
-
 #endif //EX2_BUS_H

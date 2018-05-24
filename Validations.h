@@ -10,6 +10,7 @@
 #include <vector>
 #include <map>
 #include "Exceptions.h"
+#include "TransportSystem.h"
 
 using namespace std;
 class Validations {
@@ -17,9 +18,11 @@ class Validations {
     static bool isTabsCountCorrect(const string& line);
     static bool isCorrectNumberOfArgs(int argc){return argc > 2;}
     static bool isTimeWeightCorrect(const string& number);
-    static void isNameStartWithVehicle(const string& name);
+
+
 public:
-    static void inputFilesArrangment(int argc, char* argv[],map<string,fstream*>& files);
+    static void isNameStartWithVehicle(const string& name);
+    static void isThereFileExist(int argc, char* argv[]);
     static void returnLineIfCorrect(const string& line,vector<string>& sepLine);
     static void isNamelengthCorrect(const string& name);
     static void filesFilter(int argc, char* argv[],map<string,fstream*>& files);

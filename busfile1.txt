@@ -1,4 +1,10 @@
 Westzijde Prinsengracht 10
-a b 5
+a b 30
 c d 6
+a c 4
+c f 6
+f b 2
 e f 7
+t j 5
+k l 2
+m n 1

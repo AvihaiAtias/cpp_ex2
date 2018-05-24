@@ -16,7 +16,7 @@ typedef enum{intercity = 0,stad,centraal}location;
 class Station {
 public://TODO remove
     static const int NUM_OF_VEHICLES = 4;
-    static size_t locationKey[3]; //TODO COMPLETE
+    static size_t locationKey[3];
     static size_t IC_TRANSIT_TIME;
     static size_t STAD_TRANSIT_TIME;
     static size_t CS_TRANSIT_TIME;

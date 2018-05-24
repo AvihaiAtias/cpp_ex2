@@ -18,6 +18,6 @@ public:
     virtual int getStopTime(){return SprinterStopTime;}
     static void setStopTime(int stop){SprinterStopTime = stop;}
 };
-int Sprinter::SprinterStopTime = 4;
+
 
 #endif //EX2_SPRINTER_H

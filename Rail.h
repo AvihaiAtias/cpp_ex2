@@ -18,6 +18,4 @@ public:
     static void setStopTime(int stop){RailstopTime = stop;}
 };
 
-int Rail::RailstopTime = 5;
-
 #endif //EX2_RAIL_H

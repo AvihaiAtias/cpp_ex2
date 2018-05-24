@@ -18,5 +18,4 @@ public:
     static void setStopTime(int stop){TramStopTime = stop;}
 };
 
-int Tram::TramStopTime = 3;
 #endif //EX2_TRAM_H
