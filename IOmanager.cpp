@@ -3,39 +3,52 @@
 //
 
 #include "IOmanager.h"
-#include "Exceptions.h"
+#include "Validations.h"
 #include <string>
 #include <vector>
-
-//TODO match the station file for this constructor.
-IOmanager::IOmanager(int argc,char* argv[]):inputfiles{},configFile{new fstream()},loadFile{new fstream()},
-                    outputFile{new fstream()},busWait{2},tramWait{3},sprinterWait{4},railWait{5},
+/**
+ * c`tor initialized the all variables at the default values
+ */
+IOmanager::IOmanager(int argc,char* argv[]):inputfiles{},configFile{new ifstream()},loadFile{new ifstream()},
+                    outputFile{new ofstream()},busWait{2},tramWait{3},sprinterWait{4},railWait{5},
                     ICTransit{15},CSTransit{5},StadTransit{10}{
     run(argc,argv);
 }
+/**
+ * this function actually managed the all program from
+ * opening and start the graph and to validations checks
+ */
 void IOmanager::run(int argc,char* argv[]){
     try{
-        Validations::isThereFileExist(argc,argv);
-        arrangeTheInputFiles(argc,argv);
-        arrangeTheConfigAndOutput(argc,argv);
-        graph = new TransportSystem(busWait,tramWait,sprinterWait,railWait,ICTransit,StadTransit,CSTransit);
-        buildTheGraphFromTheInputFiles();
-        waitForMoreInstructions();
+        Validations::isThereFileExist(argc,argv);//check if there some one correct input file at least and the args amount
+        arrangeTheInputFiles(argc,argv);//check the all inputfiles and keep the files in map <string filename,ifstream* file>
+        arrangeTheConfigAndOutput(argc,argv);//check if there are config and output and match the values by it.
+        graph = new TransportSystem(busWait,tramWait,sprinterWait,railWait,ICTransit,StadTransit,CSTransit); // create the graph
+        buildTheGraphFromTheInputFiles(); //load all vertexes and edges by the correct files
+        waitForMoreInstructions();//start listening to the user commands
     }catch(NoSuchFileExist e){
         exit(1);
     }catch(ArgumentsAmountError e){
         exit(1);
     }
 }
+/**
+ * this method pass the all input files and send every file
+ * to another method that parse the data
+ */
 void IOmanager::buildTheGraphFromTheInputFiles(){
-    map<string,fstream*>::iterator begin = inputfiles.begin();
-    map<string,fstream*>::iterator last = inputfiles.end();
+    map<string,ifstream*>::iterator begin = inputfiles.begin();
+    map<string,ifstream*>::iterator last = inputfiles.end();
 
     while(begin != last){
         parseTheDataFromFile(begin->second,begin->first);
         ++begin;
     }
 }
+/**
+ * this method take every input file from the arguments -
+ * check the name and the open correct, keep in map after the checks
+ */
 void IOmanager::arrangeTheInputFiles(int argc,char* argv[]){
     string str;
     for (int i = 1; i < argc; i++) {
@@ -49,9 +62,9 @@ void IOmanager::arrangeTheInputFiles(int argc,char* argv[]){
         }catch (NameFileIsUnCorrect e) {
             continue;
         }
-        fstream* fin = new fstream(argv[i], ios_base::in);
+        ifstream* fin = new ifstream(argv[i]);
         if (fin) {
-            inputfiles.insert(std::pair<string,fstream*>(argv[i],fin));
+            inputfiles.insert(std::pair<string,ifstream*>(argv[i],fin));
             fin->close();
             continue;
         }else{ //unCorrect file was found and will be ignored
@@ -65,6 +78,10 @@ void IOmanager::arrangeTheInputFiles(int argc,char* argv[]){
         }
     }
 }
+/**
+ * before loading the file(in running time) we checks
+ * the name of the file that entered and load the file
+ */
 void IOmanager::loadFilePrepare(const string& fileName){
     try{
         Validations::isNameStartWithVehicle(fileName);
@@ -73,16 +90,24 @@ void IOmanager::loadFilePrepare(const string& fileName){
         throw LoadedFileException(e.what());
     }
 }
+/**
+ * the load after checks
+ */
 void IOmanager::load(const string& fileName) {
-    loadFile->open(fileName,ios_base::in);
+    loadFile->open(fileName);
     if(!loadFile->is_open())
         throw LoadedFileException("ERROR opening the specified file.");
 
-    parseTheDataFromFile(loadFile,fileName);
+    parseTheDataFromFile(loadFile,fileName); //read the data from the file
     loadFile->close();
     cout << "Update was successful.";
 
 }
+/**
+ * search the specific station and send it to the
+ * outbound method after the foundation
+ * @param station
+ */
 void IOmanager::outboundCommandActivated(const string& station){
     Station* temp = graph->findStationIfExist(station);
     if(temp  == nullptr)
@@ -90,13 +115,23 @@ void IOmanager::outboundCommandActivated(const string& station){
 
     graph->outbound(temp);
 }
+/**
+ * same as outbound command
+ */
 void IOmanager::inboundCommandActivated(const string& station){
-    Station* temp = graph->findStationIfExist(station);
-    if(temp  == nullptr)
-        throw IllegalStation("station target doesn`t exist");
+      Station* temp = graph->findStationIfExist(station);
+      if(temp  == nullptr)
+          throw IllegalStation("station target doesn`t exist");
 
-    graph->inbound(temp);
+        graph->inbound(station);
+
 }
+/**
+ * prepare all conditions to start the uniExpress activation
+ * we make sure that there are both legal stations
+ * @param source name of vertex
+ * @param target name of vertex
+ */
 void IOmanager::uniExpressCommandActivated(const string& source,const string& target){
     Station* sourceStation = graph->findStationIfExist(source);
     Station* targetStation = graph->findStationIfExist(target);
@@ -106,6 +141,10 @@ void IOmanager::uniExpressCommandActivated(const string& source,const string& ta
         throw IllegalStation("station target doesn`t exist");
     graph->uniExpress(sourceStation,targetStation);
 }
+/**
+ * same as uniExpress
+ */
+
 void IOmanager::multiExpressCommandActivated(const string& source,const string& target){
     Station* sourceStation = graph->findStationIfExist(source);
     Station* targetStation = graph->findStationIfExist(target);
@@ -115,6 +154,11 @@ void IOmanager::multiExpressCommandActivated(const string& source,const string& 
         throw IllegalStation("station target doesn`t exist");
     graph->multiExpress(sourceStation,targetStation);
 }
+/**
+ * this method only listening to the user commands
+ * and distribute every command to the right place
+ */
+
 void IOmanager::waitForMoreInstructions(){
     string inst;
     stringstream instruction;
@@ -122,10 +166,7 @@ void IOmanager::waitForMoreInstructions(){
     string srcStation = "";
     string tgtStation = "";
     while(true){
-        printMenu();
-        cin >> inst;
-        instruction << inst;
-        instruction >> command;
+        cin >> command;
         try{
             if(command == "print"){
                 graph->print();
@@ -133,18 +174,21 @@ void IOmanager::waitForMoreInstructions(){
                 return;
             }
             else if(command == "outbound"){
-                instruction >> srcStation;
+                cin >> srcStation;
                 outboundCommandActivated(srcStation);
             }else if(command == "inbound"){
-                instruction >> srcStation;
+                cin >> srcStation;
                 inboundCommandActivated(srcStation);
             }else if(command == "uniExpress"){
-                instruction >> tgtStation;
+                cin >> srcStation;
+                cin >> tgtStation;
                 uniExpressCommandActivated(srcStation,tgtStation);
             }else if(command == "multiExpress"){
-                instruction >> tgtStation;
+                cin >> srcStation;
+                cin >> tgtStation;
                 multiExpressCommandActivated(srcStation,tgtStation);
             }else if(command == "load"){
+                cin >> srcStation;
                 loadFilePrepare(srcStation);
             }
         }catch (IllegalStation e){
@@ -154,31 +198,24 @@ void IOmanager::waitForMoreInstructions(){
         }
     }
 }
-void IOmanager::printMenu(){
-    cout << "~~~~~~~~~ MENU ~~~~~~~~~~" << endl;
-    cout << "1. Load File " << endl;
-    cout << "2. uniExpress " << endl;
-    cout << "3. multiExpress " << endl;
-    cout << "4. inbound " << endl;
-    cout << "5. outbound " << endl;
-    cout << "6. exit" << endl;
-}
-
+/**
+ * this method take name and return the pointer to the relevant station
+   from the graph
+ * @param name - string name(of the station)
+ * @return Station*
+ */
 Station* IOmanager::returnStationIfExistByName(const string& name){
     Station* station = nullptr;
     if((station = graph->findStationIfExist(name)) == nullptr)
         throw IllegalStation("this station doesn`t exist!");
     return station;
 }
-void IOmanager::takeTheInputFile(){
-    map<string,fstream*>::iterator it;
-    fstream* currfile;
-    for(it = inputfiles.begin();it != inputfiles.end(); it++){
-        parseTheDataFromFile(it->second,it->first);
-    }
-
-}
-
+/**
+ * this method get name of file that for sure start with vehicle type and return
+ * the index identification of the type
+ * @param filename - string name
+ * @return indexOfVehicle (enum that defined)
+ */
 indexOfVehicle IOmanager::whichTypeOfVehicle(const string& filename){
     string temp = filename;
     if(temp.find_first_not_of("bus") == 3) return bus;
@@ -186,13 +223,22 @@ indexOfVehicle IOmanager::whichTypeOfVehicle(const string& filename){
     else if(temp.find_first_not_of("sprinter") == 8) return sprinter;
     else if(temp.find_first_not_of("rail") == 4)return rail;
 }
-void IOmanager::parseTheDataFromFile(fstream* fin,const string& filename){
+/**
+ * get the all data from the file
+ * @param fin
+ * @param filename
+ */
+void IOmanager::parseTheDataFromFile(ifstream* fin,const string& filename){
     string line = "";
     indexOfVehicle type = whichTypeOfVehicle(filename);
-    size_t weight;
+    size_t weight = 0;
     vector<string> lineData;
+    if(!fin->is_open())
+        fin->open(filename);
+    if(!fin->is_open()) cout << "problem with the file opening" << endl;
     while(!fin->eof()){
         getline(*fin,line,'\n');
+        if(line.size() < 5)continue;
         Validations::returnLineIfCorrect(line,lineData);
         stringstream ss(lineData[2]);
         ss >> weight;
@@ -201,8 +247,13 @@ void IOmanager::parseTheDataFromFile(fstream* fin,const string& filename){
 
         lineData.clear();
     }
-
 }
+/**
+ * if there are config file or output file take the data and override the default
+ * else - keep going by default
+ * @param argc
+ * @param argv
+ */
 void IOmanager::arrangeTheConfigAndOutput(int argc,char* argv[]){
     string outputFile = "";
     string configFile = "";
@@ -214,15 +265,23 @@ void IOmanager::arrangeTheConfigAndOutput(int argc,char* argv[]){
     if(configFile != "") takeTheConfigFile(configFile);
     takeTheOutputFile(outputFile);
 }
+/**
+ * support method to take the config file data
+ * @param filename
+ */
 void IOmanager::takeTheConfigFile(string filename){
     try{
-        configFile->open(filename,ios_base::in);
+        configFile->open(filename);
         if(!configFile)throw FileNotOpenException("problem with the config file - set the default definitions");
     }catch (FileNotOpenException e){return;}
 
     parseTheConfigFile();
     configFile->close();
 }
+/**
+ * another supported method for the config
+ * this method change the relevant values
+ */
 void IOmanager::parseTheConfigFile(){
     string type;
     int value;
@@ -242,7 +301,7 @@ void IOmanager::parseTheConfigFile(){
 }
 void IOmanager::takeTheOutputFile(string filename){
     try{
-        outputFile->open(filename,ios_base::app);
+        outputFile->open(filename, ios_base::out | ios_base::app);
         if(!outputFile)throw FileNotOpenException("problem with the output file");
     }catch (FileNotOpenException e){exit(1);}
 }

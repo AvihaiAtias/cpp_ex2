@@ -8,12 +8,11 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include "Station.h"
 #include "Vehicle.h"
-#include "Bus.h"
-#include "Tram.h"
-#include "Sprinter.h"
-#include "Rail.h"
+
+
+class Station;
+class Vehicle;
 using namespace std;
 class TransportSystem {
 public:
@@ -30,10 +29,9 @@ public:
     size_t* edgeWeightTotalCalculation(Station* source,Station* target);
     Station* giveMinVertex(list<Station*> slist);
     void inboundSupport(const list<Station*> *graph2,Station *source);
-
 public:
     void multiExpress(Station *source,Station* target);
-    void inbound(Station* source);
+    void inbound(const string& source);
     void outbound(Station* source);
     void dijkstraPremiumAlgorithm(Station* source);
     void dijkstraAlgorithm(TransportSystem *graph2,Station *source);

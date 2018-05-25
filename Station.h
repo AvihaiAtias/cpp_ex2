@@ -6,12 +6,16 @@
 #define EX2_STATION_H
 #include <iostream>
 #include <list>
-#include "Vehicle.h"
-#include "TransportSystem.h"
 #include <memory>
+#include "Vehicle.h"
+
+class Bus;
+class Tram;
+class Rail;
+class Sprinter;
 
 using namespace std;
-
+class TransportSystem;
 typedef enum{intercity = 0,stad,centraal}location;
 class Station {
 public://TODO remove

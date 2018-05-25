@@ -122,6 +122,33 @@ ex2/fast:
 	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/build
 .PHONY : ex2/fast
 
+Bus.obj: Bus.cpp.obj
+
+.PHONY : Bus.obj
+
+# target to build an object file
+Bus.cpp.obj:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Bus.cpp.obj
+.PHONY : Bus.cpp.obj
+
+Bus.i: Bus.cpp.i
+
+.PHONY : Bus.i
+
+# target to preprocess a source file
+Bus.cpp.i:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Bus.cpp.i
+.PHONY : Bus.cpp.i
+
+Bus.s: Bus.cpp.s
+
+.PHONY : Bus.s
+
+# target to generate assembly for a file
+Bus.cpp.s:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Bus.cpp.s
+.PHONY : Bus.cpp.s
+
 IOmanager.obj: IOmanager.cpp.obj
 
 .PHONY : IOmanager.obj
@@ -149,6 +176,60 @@ IOmanager.cpp.s:
 	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/IOmanager.cpp.s
 .PHONY : IOmanager.cpp.s
 
+Rail.obj: Rail.cpp.obj
+
+.PHONY : Rail.obj
+
+# target to build an object file
+Rail.cpp.obj:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Rail.cpp.obj
+.PHONY : Rail.cpp.obj
+
+Rail.i: Rail.cpp.i
+
+.PHONY : Rail.i
+
+# target to preprocess a source file
+Rail.cpp.i:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Rail.cpp.i
+.PHONY : Rail.cpp.i
+
+Rail.s: Rail.cpp.s
+
+.PHONY : Rail.s
+
+# target to generate assembly for a file
+Rail.cpp.s:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Rail.cpp.s
+.PHONY : Rail.cpp.s
+
+Sprinter.obj: Sprinter.cpp.obj
+
+.PHONY : Sprinter.obj
+
+# target to build an object file
+Sprinter.cpp.obj:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Sprinter.cpp.obj
+.PHONY : Sprinter.cpp.obj
+
+Sprinter.i: Sprinter.cpp.i
+
+.PHONY : Sprinter.i
+
+# target to preprocess a source file
+Sprinter.cpp.i:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Sprinter.cpp.i
+.PHONY : Sprinter.cpp.i
+
+Sprinter.s: Sprinter.cpp.s
+
+.PHONY : Sprinter.s
+
+# target to generate assembly for a file
+Sprinter.cpp.s:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Sprinter.cpp.s
+.PHONY : Sprinter.cpp.s
+
 Station.obj: Station.cpp.obj
 
 .PHONY : Station.obj
@@ -175,6 +256,33 @@ Station.s: Station.cpp.s
 Station.cpp.s:
 	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Station.cpp.s
 .PHONY : Station.cpp.s
+
+Tram.obj: Tram.cpp.obj
+
+.PHONY : Tram.obj
+
+# target to build an object file
+Tram.cpp.obj:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Tram.cpp.obj
+.PHONY : Tram.cpp.obj
+
+Tram.i: Tram.cpp.i
+
+.PHONY : Tram.i
+
+# target to preprocess a source file
+Tram.cpp.i:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Tram.cpp.i
+.PHONY : Tram.cpp.i
+
+Tram.s: Tram.cpp.s
+
+.PHONY : Tram.s
+
+# target to generate assembly for a file
+Tram.cpp.s:
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Tram.cpp.s
+.PHONY : Tram.cpp.s
 
 TransportSystem.obj: TransportSystem.cpp.obj
 
@@ -230,33 +338,6 @@ Validations.cpp.s:
 	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Validations.cpp.s
 .PHONY : Validations.cpp.s
 
-Vehicle.obj: Vehicle.cpp.obj
-
-.PHONY : Vehicle.obj
-
-# target to build an object file
-Vehicle.cpp.obj:
-	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Vehicle.cpp.obj
-.PHONY : Vehicle.cpp.obj
-
-Vehicle.i: Vehicle.cpp.i
-
-.PHONY : Vehicle.i
-
-# target to preprocess a source file
-Vehicle.cpp.i:
-	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Vehicle.cpp.i
-.PHONY : Vehicle.cpp.i
-
-Vehicle.s: Vehicle.cpp.s
-
-.PHONY : Vehicle.s
-
-# target to generate assembly for a file
-Vehicle.cpp.s:
-	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Vehicle.cpp.s
-.PHONY : Vehicle.cpp.s
-
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -293,21 +374,30 @@ help:
 	@echo ... ex2
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... Bus.obj
+	@echo ... Bus.i
+	@echo ... Bus.s
 	@echo ... IOmanager.obj
 	@echo ... IOmanager.i
 	@echo ... IOmanager.s
+	@echo ... Rail.obj
+	@echo ... Rail.i
+	@echo ... Rail.s
+	@echo ... Sprinter.obj
+	@echo ... Sprinter.i
+	@echo ... Sprinter.s
 	@echo ... Station.obj
 	@echo ... Station.i
 	@echo ... Station.s
+	@echo ... Tram.obj
+	@echo ... Tram.i
+	@echo ... Tram.s
 	@echo ... TransportSystem.obj
 	@echo ... TransportSystem.i
 	@echo ... TransportSystem.s
 	@echo ... Validations.obj
 	@echo ... Validations.i
 	@echo ... Validations.s
-	@echo ... Vehicle.obj
-	@echo ... Vehicle.i
-	@echo ... Vehicle.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

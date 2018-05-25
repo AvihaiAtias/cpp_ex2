@@ -152,33 +152,9 @@ CMakeFiles/ex2.dir/IOmanager.cpp.obj.provides: CMakeFiles/ex2.dir/IOmanager.cpp.
 CMakeFiles/ex2.dir/IOmanager.cpp.obj.provides.build: CMakeFiles/ex2.dir/IOmanager.cpp.obj
 
 
-CMakeFiles/ex2.dir/Vehicle.cpp.obj: CMakeFiles/ex2.dir/flags.make
-CMakeFiles/ex2.dir/Vehicle.cpp.obj: ../Vehicle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ex2.dir/Vehicle.cpp.obj"
-	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Vehicle.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Vehicle.cpp
-
-CMakeFiles/ex2.dir/Vehicle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Vehicle.cpp.i"
-	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\aviha\CLionProjects\ex2\Vehicle.cpp > CMakeFiles\ex2.dir\Vehicle.cpp.i
-
-CMakeFiles/ex2.dir/Vehicle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Vehicle.cpp.s"
-	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\aviha\CLionProjects\ex2\Vehicle.cpp -o CMakeFiles\ex2.dir\Vehicle.cpp.s
-
-CMakeFiles/ex2.dir/Vehicle.cpp.obj.requires:
-
-.PHONY : CMakeFiles/ex2.dir/Vehicle.cpp.obj.requires
-
-CMakeFiles/ex2.dir/Vehicle.cpp.obj.provides: CMakeFiles/ex2.dir/Vehicle.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Vehicle.cpp.obj.provides.build
-.PHONY : CMakeFiles/ex2.dir/Vehicle.cpp.obj.provides
-
-CMakeFiles/ex2.dir/Vehicle.cpp.obj.provides.build: CMakeFiles/ex2.dir/Vehicle.cpp.obj
-
-
 CMakeFiles/ex2.dir/Station.cpp.obj: CMakeFiles/ex2.dir/flags.make
 CMakeFiles/ex2.dir/Station.cpp.obj: ../Station.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ex2.dir/Station.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ex2.dir/Station.cpp.obj"
 	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Station.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Station.cpp
 
 CMakeFiles/ex2.dir/Station.cpp.i: cmake_force
@@ -200,14 +176,113 @@ CMakeFiles/ex2.dir/Station.cpp.obj.provides: CMakeFiles/ex2.dir/Station.cpp.obj.
 CMakeFiles/ex2.dir/Station.cpp.obj.provides.build: CMakeFiles/ex2.dir/Station.cpp.obj
 
 
+CMakeFiles/ex2.dir/Bus.cpp.obj: CMakeFiles/ex2.dir/flags.make
+CMakeFiles/ex2.dir/Bus.cpp.obj: ../Bus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ex2.dir/Bus.cpp.obj"
+	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Bus.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Bus.cpp
+
+CMakeFiles/ex2.dir/Bus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Bus.cpp.i"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\aviha\CLionProjects\ex2\Bus.cpp > CMakeFiles\ex2.dir\Bus.cpp.i
+
+CMakeFiles/ex2.dir/Bus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Bus.cpp.s"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\aviha\CLionProjects\ex2\Bus.cpp -o CMakeFiles\ex2.dir\Bus.cpp.s
+
+CMakeFiles/ex2.dir/Bus.cpp.obj.requires:
+
+.PHONY : CMakeFiles/ex2.dir/Bus.cpp.obj.requires
+
+CMakeFiles/ex2.dir/Bus.cpp.obj.provides: CMakeFiles/ex2.dir/Bus.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Bus.cpp.obj.provides.build
+.PHONY : CMakeFiles/ex2.dir/Bus.cpp.obj.provides
+
+CMakeFiles/ex2.dir/Bus.cpp.obj.provides.build: CMakeFiles/ex2.dir/Bus.cpp.obj
+
+
+CMakeFiles/ex2.dir/Tram.cpp.obj: CMakeFiles/ex2.dir/flags.make
+CMakeFiles/ex2.dir/Tram.cpp.obj: ../Tram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ex2.dir/Tram.cpp.obj"
+	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Tram.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Tram.cpp
+
+CMakeFiles/ex2.dir/Tram.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Tram.cpp.i"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\aviha\CLionProjects\ex2\Tram.cpp > CMakeFiles\ex2.dir\Tram.cpp.i
+
+CMakeFiles/ex2.dir/Tram.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Tram.cpp.s"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\aviha\CLionProjects\ex2\Tram.cpp -o CMakeFiles\ex2.dir\Tram.cpp.s
+
+CMakeFiles/ex2.dir/Tram.cpp.obj.requires:
+
+.PHONY : CMakeFiles/ex2.dir/Tram.cpp.obj.requires
+
+CMakeFiles/ex2.dir/Tram.cpp.obj.provides: CMakeFiles/ex2.dir/Tram.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Tram.cpp.obj.provides.build
+.PHONY : CMakeFiles/ex2.dir/Tram.cpp.obj.provides
+
+CMakeFiles/ex2.dir/Tram.cpp.obj.provides.build: CMakeFiles/ex2.dir/Tram.cpp.obj
+
+
+CMakeFiles/ex2.dir/Sprinter.cpp.obj: CMakeFiles/ex2.dir/flags.make
+CMakeFiles/ex2.dir/Sprinter.cpp.obj: ../Sprinter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ex2.dir/Sprinter.cpp.obj"
+	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Sprinter.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Sprinter.cpp
+
+CMakeFiles/ex2.dir/Sprinter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Sprinter.cpp.i"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\aviha\CLionProjects\ex2\Sprinter.cpp > CMakeFiles\ex2.dir\Sprinter.cpp.i
+
+CMakeFiles/ex2.dir/Sprinter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Sprinter.cpp.s"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\aviha\CLionProjects\ex2\Sprinter.cpp -o CMakeFiles\ex2.dir\Sprinter.cpp.s
+
+CMakeFiles/ex2.dir/Sprinter.cpp.obj.requires:
+
+.PHONY : CMakeFiles/ex2.dir/Sprinter.cpp.obj.requires
+
+CMakeFiles/ex2.dir/Sprinter.cpp.obj.provides: CMakeFiles/ex2.dir/Sprinter.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Sprinter.cpp.obj.provides.build
+.PHONY : CMakeFiles/ex2.dir/Sprinter.cpp.obj.provides
+
+CMakeFiles/ex2.dir/Sprinter.cpp.obj.provides.build: CMakeFiles/ex2.dir/Sprinter.cpp.obj
+
+
+CMakeFiles/ex2.dir/Rail.cpp.obj: CMakeFiles/ex2.dir/flags.make
+CMakeFiles/ex2.dir/Rail.cpp.obj: ../Rail.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ex2.dir/Rail.cpp.obj"
+	C:\MinGW64\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\ex2.dir\Rail.cpp.obj -c C:\Users\aviha\CLionProjects\ex2\Rail.cpp
+
+CMakeFiles/ex2.dir/Rail.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ex2.dir/Rail.cpp.i"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\aviha\CLionProjects\ex2\Rail.cpp > CMakeFiles\ex2.dir\Rail.cpp.i
+
+CMakeFiles/ex2.dir/Rail.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ex2.dir/Rail.cpp.s"
+	C:\MinGW64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\aviha\CLionProjects\ex2\Rail.cpp -o CMakeFiles\ex2.dir\Rail.cpp.s
+
+CMakeFiles/ex2.dir/Rail.cpp.obj.requires:
+
+.PHONY : CMakeFiles/ex2.dir/Rail.cpp.obj.requires
+
+CMakeFiles/ex2.dir/Rail.cpp.obj.provides: CMakeFiles/ex2.dir/Rail.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\ex2.dir\build.make CMakeFiles/ex2.dir/Rail.cpp.obj.provides.build
+.PHONY : CMakeFiles/ex2.dir/Rail.cpp.obj.provides
+
+CMakeFiles/ex2.dir/Rail.cpp.obj.provides.build: CMakeFiles/ex2.dir/Rail.cpp.obj
+
+
 # Object files for target ex2
 ex2_OBJECTS = \
 "CMakeFiles/ex2.dir/main.cpp.obj" \
 "CMakeFiles/ex2.dir/TransportSystem.cpp.obj" \
 "CMakeFiles/ex2.dir/Validations.cpp.obj" \
 "CMakeFiles/ex2.dir/IOmanager.cpp.obj" \
-"CMakeFiles/ex2.dir/Vehicle.cpp.obj" \
-"CMakeFiles/ex2.dir/Station.cpp.obj"
+"CMakeFiles/ex2.dir/Station.cpp.obj" \
+"CMakeFiles/ex2.dir/Bus.cpp.obj" \
+"CMakeFiles/ex2.dir/Tram.cpp.obj" \
+"CMakeFiles/ex2.dir/Sprinter.cpp.obj" \
+"CMakeFiles/ex2.dir/Rail.cpp.obj"
 
 # External object files for target ex2
 ex2_EXTERNAL_OBJECTS =
@@ -216,13 +291,16 @@ ex2.exe: CMakeFiles/ex2.dir/main.cpp.obj
 ex2.exe: CMakeFiles/ex2.dir/TransportSystem.cpp.obj
 ex2.exe: CMakeFiles/ex2.dir/Validations.cpp.obj
 ex2.exe: CMakeFiles/ex2.dir/IOmanager.cpp.obj
-ex2.exe: CMakeFiles/ex2.dir/Vehicle.cpp.obj
 ex2.exe: CMakeFiles/ex2.dir/Station.cpp.obj
+ex2.exe: CMakeFiles/ex2.dir/Bus.cpp.obj
+ex2.exe: CMakeFiles/ex2.dir/Tram.cpp.obj
+ex2.exe: CMakeFiles/ex2.dir/Sprinter.cpp.obj
+ex2.exe: CMakeFiles/ex2.dir/Rail.cpp.obj
 ex2.exe: CMakeFiles/ex2.dir/build.make
 ex2.exe: CMakeFiles/ex2.dir/linklibs.rsp
 ex2.exe: CMakeFiles/ex2.dir/objects1.rsp
 ex2.exe: CMakeFiles/ex2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ex2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\aviha\CLionProjects\ex2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ex2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ex2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -234,8 +312,11 @@ CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/main.cpp.obj.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/TransportSystem.cpp.obj.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Validations.cpp.obj.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/IOmanager.cpp.obj.requires
-CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Vehicle.cpp.obj.requires
 CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Station.cpp.obj.requires
+CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Bus.cpp.obj.requires
+CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Tram.cpp.obj.requires
+CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Sprinter.cpp.obj.requires
+CMakeFiles/ex2.dir/requires: CMakeFiles/ex2.dir/Rail.cpp.obj.requires
 
 .PHONY : CMakeFiles/ex2.dir/requires
 

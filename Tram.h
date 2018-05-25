@@ -1,7 +1,9 @@
 //
 // Created by aviha on 18/05/2018.
 //
-
+/**
+ * object extends the vehicle and overriding the method
+ */
 #ifndef EX2_TRAM_H
 #define EX2_TRAM_H
 
@@ -17,5 +19,4 @@ public:
     virtual int getStopTime(){return TramStopTime;}
     static void setStopTime(int stop){TramStopTime = stop;}
 };
-
 #endif //EX2_TRAM_H

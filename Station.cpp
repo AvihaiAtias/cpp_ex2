@@ -3,15 +3,16 @@
 //
 
 #include "Station.h"
+#include "TransportSystem.h"
 #include "Bus.h"
 #include "Tram.h"
-#include "Sprinter.h"
 #include "Rail.h"
+#include "Sprinter.h"
 
-size_t Station::IC_TRANSIT_TIME = 0;
-size_t Station::STAD_TRANSIT_TIME = 0;
-size_t Station::CS_TRANSIT_TIME = 0;
-size_t Station::locationKey[3] = {IC_TRANSIT_TIME,IC_TRANSIT_TIME,IC_TRANSIT_TIME};
+size_t Station::IC_TRANSIT_TIME;
+size_t Station::STAD_TRANSIT_TIME;
+size_t Station::CS_TRANSIT_TIME;
+size_t Station::locationKey[3];
 
 Station::Station(string name):name{name}{
     init();

@@ -1,7 +1,9 @@
 //
 // Created by aviha on 18/05/2018.
 //
-
+/**
+ * object extends the vehicle and overriding the method
+ */
 #ifndef EX2_RAIL_H
 #define EX2_RAIL_H
 

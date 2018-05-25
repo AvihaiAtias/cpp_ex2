@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Bus.cpp">
+			<Option target="ex2"/>
+		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Bus.h">
 			<Option target="ex2"/>
 		</Unit>
@@ -92,7 +95,13 @@
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/IOmanager.h">
 			<Option target="ex2"/>
 		</Unit>
+		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Rail.cpp">
+			<Option target="ex2"/>
+		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Rail.h">
+			<Option target="ex2"/>
+		</Unit>
+		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Sprinter.cpp">
 			<Option target="ex2"/>
 		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Sprinter.h">
@@ -102,6 +111,9 @@
 			<Option target="ex2"/>
 		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Station.h">
+			<Option target="ex2"/>
+		</Unit>
+		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Tram.cpp">
 			<Option target="ex2"/>
 		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Tram.h">
@@ -117,9 +129,6 @@
 			<Option target="ex2"/>
 		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Validations.h">
-			<Option target="ex2"/>
-		</Unit>
-		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Vehicle.cpp">
 			<Option target="ex2"/>
 		</Unit>
 		<Unit filename="C:/Users/aviha/CLionProjects/ex2/Vehicle.h">

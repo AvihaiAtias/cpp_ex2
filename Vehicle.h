@@ -10,6 +10,7 @@
 using namespace std;
 class Station;
 class TransportSystem;
+
 typedef enum{bus = 0,tram,sprinter,rail}indexOfVehicle;
 class Vehicle{
 public:

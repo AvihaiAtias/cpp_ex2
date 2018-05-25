@@ -3,20 +3,25 @@
 //
 
 #include "TransportSystem.h"
+#include "Station.h"
+#include "Bus.h"
+#include "Tram.h"
+#include "Sprinter.h"
+#include "Rail.h"
 #include <limits>
 
 /*function that get source station, target station and weight and create new edge*/
 
-
-TransportSystem::TransportSystem(size_t  bus,size_t tram,size_t sprinter, size_t rail,
-        size_t ICTransit,size_t StadTransit,size_t CSTransit){
+TransportSystem::TransportSystem(size_t bus1,size_t tram1,size_t sprinter1,size_t rail1,
+        size_t ICTransit1,size_t StadTransit1,size_t CSTransit1){
         Bus::setStopTime(bus);
         Tram::setStopTime(tram);
         Sprinter::setStopTime(sprinter);
         Rail::setStopTime(rail);
-        Station::CS_TRANSIT_TIME = CSTransit;
-        Station::IC_TRANSIT_TIME = ICTransit;
-        Station::STAD_TRANSIT_TIME = StadTransit;
+
+        Station::CS_TRANSIT_TIME = CSTransit1;
+        Station::IC_TRANSIT_TIME = ICTransit1;
+        Station::STAD_TRANSIT_TIME = StadTransit1;
 }
 void TransportSystem::addStation(const string& sourceName,const string& targetName,size_t weight,indexOfVehicle Index){
     Station *SourceStation = findStationIfExist(sourceName); //check if source station exist
@@ -61,8 +66,8 @@ TransportSystem* TransportSystem::reverseEdges(){
 }
 /*function that create new graph with same vertexs from the original graph*/
 TransportSystem* TransportSystem::createGraphWithSameVertex(){
-    list<Station*>::iterator begin=graph.begin();
-    list<Station*>::iterator end=graph.end();
+    list<Station*>::iterator begin = graph.begin();
+    list<Station*>::iterator end = graph.end();
     TransportSystem* newGraph = new TransportSystem(); //create new graph
     for(;begin!=end;begin++) //while that Passing all the vertex in the original graph
         newGraph->graph.push_back(new Station((*begin)->getName())); //add the vertex in the new graph
@@ -93,7 +98,6 @@ void TransportSystem::print() {
         }
     }
 }
-
 void TransportSystem::dijkstraAlgorithm(TransportSystem *graph2,Station *source) {
     makeAllInf(graph2);//initialization all the station in infinite
     for(int i = 0; i < 4 ; i++)source->vehicles[i]->time_Weight = 0;
@@ -188,7 +192,7 @@ void TransportSystem::dijkstraPremiumAlgorithm(Station* source){
         beginIn = Point2Station->adjacent.begin();
         endIn = Point2Station->adjacent.end();
         for(;beginIn!=endIn;beginIn++){
-            elaborateWeightArray =edgeWeightTotalCalculation(Point2Station,*beginIn);
+            elaborateWeightArray = edgeWeightTotalCalculation(Point2Station,*beginIn);
             for(int i=0;i<4;i++){
                 if(MinIndex == -1 && elaborateWeightArray[i] != -1)
                     MinIndex=i;
@@ -345,14 +349,10 @@ void TransportSystem::outbound(Station* source){
     printAllTheStationWithTravle(&graph, source, "no outbound travel");
 
 }
-void TransportSystem::inbound(Station* source){
+void TransportSystem::inbound(const string& source){
     TransportSystem *reversGraph = reverseEdges();
-    dijkstraAlgorithm(reversGraph,source);
-    printAllTheStationWithTravle(&(reversGraph->graph), source, "no inbound travel");
-
-}
-void TransportSystem::inboundSupport(const list<Station*> *graph2,Station *source){
-
+    dijkstraAlgorithm(reversGraph,reversGraph->findStationIfExist(source));
+    printAllTheStationWithTravle(&(reversGraph->graph), reversGraph->findStationIfExist(source), "no inbound travel");
 }
 void TransportSystem::multiExpress(Station *source,Station* target){
     bool ifEdgeExist=false;
