@@ -5,7 +5,7 @@
 #ifndef EX2_VEHICLE_H
 #define EX2_VEHICLE_H
 #include <iostream>
-
+#include <memory>
 
 using namespace std;
 class Station;
@@ -15,11 +15,12 @@ typedef enum{bus = 0,tram,sprinter,rail}indexOfVehicle;
 class Vehicle{
 public:
     size_t time_Weight;
+    //shared_ptr<Station> parent;
     Station* parent;
     friend class TransportSystem;
 //public:
     Vehicle():time_Weight{0},parent{nullptr}{}
-    Vehicle(size_t time):time_Weight{time},parent{nullptr}{}
+    Vehicle(size_t time):time_Weight{time},parent{nullptr}{}//TODO smart ptr
 
     virtual int getStopTime() = 0;
 

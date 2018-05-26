@@ -3,4 +3,4 @@
 //
 #include "Rail.h"
 
-int Rail::RailstopTime = 0;
+int Rail::RailstopTime = 5;

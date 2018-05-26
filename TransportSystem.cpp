@@ -14,10 +14,10 @@
 
 TransportSystem::TransportSystem(size_t bus1,size_t tram1,size_t sprinter1,size_t rail1,
         size_t ICTransit1,size_t StadTransit1,size_t CSTransit1){
-        Bus::setStopTime(bus);
-        Tram::setStopTime(tram);
-        Sprinter::setStopTime(sprinter);
-        Rail::setStopTime(rail);
+        Bus::setStopTime(bus1);
+        Tram::setStopTime(tram1);
+        Sprinter::setStopTime(sprinter1);
+        Rail::setStopTime(rail1);
 
         Station::CS_TRANSIT_TIME = CSTransit1;
         Station::IC_TRANSIT_TIME = ICTransit1;
@@ -60,7 +60,7 @@ TransportSystem* TransportSystem::reverseEdges(){
             newGraph->addStation((*beginIn)->getName(), name,(*beginIn)->vehicles[rail]->getTime_Weight(), rail);
             newGraph->addStation((*beginIn)->getName(), name,(*beginIn)->vehicles[tram]->getTime_Weight(), tram);
             newGraph->addStation((*beginIn)->getName(), name,(*beginIn)->vehicles[sprinter]->getTime_Weight(), sprinter);
-        }//TODO *******
+        }
     }
     return newGraph; //return the new graph
 }
@@ -144,11 +144,6 @@ void TransportSystem::dijkstraSupport(TransportSystem *graph2,Station* source,in
                          (*beginIn)->vehicles[index]->getStopTime();
 
             point2MainVertex = graph2->findStationIfExist((*beginIn)->name);
-            //TODO DELETE in the end
-            if(!point2MainVertex){
-                cout << "Disaster!!" << endl;//TODO change this print
-                exit(1);
-            }
             if(point2MainVertex->vehicles[index]->time_Weight > currWeight && point2MainVertex->vehicles[index]->time_Weight != 0){
                 point2MainVertex->vehicles[index]->time_Weight = currWeight;
                 point2MainVertex->vehicles[index]->parent = point2Station;
@@ -193,6 +188,7 @@ void TransportSystem::dijkstraPremiumAlgorithm(Station* source){
         endIn = Point2Station->adjacent.end();
         for(;beginIn!=endIn;beginIn++){
             elaborateWeightArray = edgeWeightTotalCalculation(Point2Station,*beginIn);
+            if(elaborateWeightArray == nullptr){return;}
             for(int i=0;i<4;i++){
                 if(MinIndex == -1 && elaborateWeightArray[i] != -1)
                     MinIndex=i;
@@ -241,15 +237,14 @@ void TransportSystem::makeAllInf(TransportSystem *graph2){
 size_t * TransportSystem::edgeWeightTotalCalculation(Station* source,Station* target){
     size_t* elaborateWeightArray = new size_t[4];
     int i = 0;
-    bool flag = false;
+    bool roadExistFlag = false;
     for(i = 0 ; i < 4 ; i++){
         if(source->vehicles[i]->time_Weight != numeric_limits<int>::max()){
-            flag = true;
+            roadExistFlag = true;
             break;
         }
     }
-    if(!flag){
-        cout<<"somthing wrong!!"<<endl; //TODO change this print
+    if(!roadExistFlag){//there are no ways to the target station
         return nullptr;
     }
     for(int j = 0 ; j < 4 ; j++){

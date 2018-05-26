@@ -257,8 +257,10 @@ void IOmanager::parseTheDataFromFile(ifstream* fin,const string& filename){
 void IOmanager::arrangeTheConfigAndOutput(int argc,char* argv[]){
     string outputFile = "";
     string configFile = "";
+    string currArg = "";
     for(int i = 1;i<argc ; i++){
-        if(argv[i] == "-c") configFile = argv[i+1];
+        if((currArg = argv[i]) == "-c")
+            configFile = argv[i+1];
         else if(argv[i] == "-o") outputFile = argv[i+1];
     }
     if(outputFile == "")outputFile = "output.dat";

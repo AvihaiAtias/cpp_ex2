@@ -35,6 +35,7 @@ class IOmanager {
     void loadFilePrepare(const string& fileName);
     void takeTheConfigFile(string filename);
     void takeTheOutputFile(string filename);
+    Station* returnStationIfExistByName(const string& name);
 public:
     IOmanager(int argc,char* argv[]);
     void arrangeTheConfigAndOutput(int argc,char* argv[]);

@@ -23,12 +23,10 @@ public:
     string getNameByIndex(indexOfVehicle index);
     void makeAllInf(TransportSystem *graph2);
     void printAllTheStationWithTravle(const list<Station*> *graph2,Station* source,const string& NoTravleMessage);
-    indexOfVehicle getOptVehicle(Station* source,Station* target);
     Station* findStationList(list<Station*>& stlist,const string& stationName);
     Station* giveMinVertexByIndex(list<Station*> slist,indexOfVehicle index);
     size_t* edgeWeightTotalCalculation(Station* source,Station* target);
     Station* giveMinVertex(list<Station*> slist);
-    void inboundSupport(const list<Station*> *graph2,Station *source);
 public:
     void multiExpress(Station *source,Station* target);
     void inbound(const string& source);

@@ -18,7 +18,7 @@ using namespace std;
 class TransportSystem;
 typedef enum{intercity = 0,stad,centraal}location;
 class Station {
-public://TODO remove
+public:
     static const int NUM_OF_VEHICLES = 4;
     static size_t locationKey[3];
     static size_t IC_TRANSIT_TIME;
@@ -31,13 +31,12 @@ public://TODO remove
     void init();
     friend class TransportSystem;
 public:
-    Station* findIfStationExistInList(const string &StationName); //TODO AND ADD TO AVIHAI
-    Station(string name,indexOfVehicle index,size_t weight);//TODO AND ADD TO AVIHAI
+    Station* findIfStationExistInList(const string &StationName);
+    Station(string name,indexOfVehicle index,size_t weight);
     Station(string name);
     static size_t getIC_TRANSIT_TIME() {
         return IC_TRANSIT_TIME;
     }
-
     static void setIC_TRANSIT_TIME(size_t IC_TRANSIT_TIME) {
         Station::IC_TRANSIT_TIME = IC_TRANSIT_TIME;
     }
